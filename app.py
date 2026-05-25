@@ -10,7 +10,7 @@ model = pickle.load(open('model.pkl', 'rb'))
 vectorizer = pickle.load(open('vectorizer.pkl', 'rb'))
 
 # LOAD FRAUD ANALYTICS DATASET
-fraud_data = pd.read_csv(" Fraud Dataset.csv")
+fraud_data = pd.read_csv("Fraud Dataset.csv")
 
 
 # PAGE SETTINGS
