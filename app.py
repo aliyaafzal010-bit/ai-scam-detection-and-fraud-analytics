@@ -3,14 +3,13 @@ import pandas as pd
 import pickle
 import re
 import plotly.express as px
-import plotly.graph_objects as go
 
 # =========================================================
 # PAGE CONFIG
 # =========================================================
 
 st.set_page_config(
-    page_title="AI Scam Detection System",
+    page_title="AI Scam Detection",
     page_icon="🛡️",
     layout="wide"
 )
@@ -21,6 +20,16 @@ st.set_page_config(
 
 st.markdown("""
 <style>
+
+body {
+    background-color: #f7f9fc;
+}
+
+.main {
+    background-color: #f7f9fc;
+}
+
+/* Hide Streamlit Branding */
 
 #MainMenu {
     visibility: hidden;
@@ -34,59 +43,88 @@ header {
     visibility: hidden;
 }
 
-.main {
-    background-color: #f4f7fc;
-}
+/* Main Container */
 
 .block-container {
-    padding-top: 1rem;
-    padding-bottom: 2rem;
+    padding-top: 2rem;
     padding-left: 3rem;
     padding-right: 3rem;
 }
 
-.hero-section {
-    background: linear-gradient(135deg,#2563eb,#06b6d4);
-    padding: 60px;
+/* Hero Section */
+
+.hero {
+    background: linear-gradient(135deg, #dbeafe, #e0f2fe);
+    padding: 50px;
     border-radius: 25px;
     text-align: center;
-    color: white;
     margin-bottom: 40px;
+    border: 1px solid #cbd5e1;
 }
 
-.hero-title {
+.hero h1 {
+    color: #0f172a;
     font-size: 55px;
     font-weight: bold;
 }
 
-.hero-subtitle {
+.hero p {
+    color: #334155;
     font-size: 22px;
-    margin-top: 15px;
 }
+
+/* Cards */
+
+.card {
+    background-color: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0px 4px 20px rgba(0,0,0,0.06);
+    border: 1px solid #e2e8f0;
+}
+
+/* Feature Cards */
 
 .feature-card {
     background-color: white;
-    padding: 30px;
-    border-radius: 20px;
-    text-align: center;
-    box-shadow: 0px 4px 20px rgba(0,0,0,0.08);
-    margin-bottom: 20px;
-}
-
-.detect-box {
-    background-color: white;
-    padding: 30px;
-    border-radius: 20px;
-    box-shadow: 0px 4px 20px rgba(0,0,0,0.08);
-}
-
-.dashboard-card {
-    background-color: white;
     padding: 25px;
     border-radius: 20px;
-    box-shadow: 0px 4px 15px rgba(0,0,0,0.06);
-    margin-top: 20px;
+    text-align: center;
+    box-shadow: 0px 4px 15px rgba(0,0,0,0.05);
+    border: 1px solid #e2e8f0;
 }
+
+.feature-card h3 {
+    color: #0f172a;
+}
+
+.feature-card p {
+    color: #475569;
+}
+
+/* Result Cards */
+
+.safe-box {
+    background-color: #dcfce7;
+    color: #166534;
+    padding: 25px;
+    border-radius: 15px;
+    font-size: 22px;
+    font-weight: bold;
+    border: 1px solid #bbf7d0;
+}
+
+.scam-box {
+    background-color: #fee2e2;
+    color: #991b1b;
+    padding: 25px;
+    border-radius: 15px;
+    font-size: 22px;
+    font-weight: bold;
+    border: 1px solid #fecaca;
+}
+
+/* Buttons */
 
 .stButton button {
     width: 100%;
@@ -104,22 +142,36 @@ header {
     color: white;
 }
 
-.result-safe {
-    background-color: #dcfce7;
-    padding: 25px;
-    border-radius: 15px;
-    color: #166534;
-    font-size: 22px;
-    font-weight: bold;
+/* Text Area */
+
+textarea {
+    border-radius: 15px !important;
+    border: 2px solid #cbd5e1 !important;
+    color: #0f172a !important;
 }
 
-.result-scam {
-    background-color: #fee2e2;
-    padding: 25px;
-    border-radius: 15px;
-    color: #991b1b;
-    font-size: 22px;
-    font-weight: bold;
+/* Headers */
+
+h1, h2, h3 {
+    color: #0f172a !important;
+}
+
+/* Metrics */
+
+[data-testid="metric-container"] {
+    background-color: white;
+    border-radius: 18px;
+    padding: 20px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.04);
+}
+
+[data-testid="metric-container"] label {
+    color: #475569 !important;
+}
+
+[data-testid="metric-container"] div {
+    color: #0f172a !important;
 }
 
 </style>
@@ -143,22 +195,20 @@ fraud_data = pd.read_csv("Fraud Dataset.csv")
 # =========================================================
 
 st.markdown("""
-<div class="hero-section">
+<div class="hero">
 
-<div class="hero-title">
-🛡️ AI Scam Detection & Fraud Analytics
-</div>
+<h1>🛡️ AI Scam Detection & Fraud Analytics</h1>
 
-<div class="hero-subtitle">
-Protect Yourself from OTP Fraud, KYC Scam,
-Phishing, Banking Fraud and Online Scams
-</div>
+<p>
+Detect OTP Fraud, KYC Scam, Phishing,
+Banking Fraud and Suspicious Messages using AI
+</p>
 
 </div>
 """, unsafe_allow_html=True)
 
 # =========================================================
-# FEATURES SECTION
+# FEATURE SECTION
 # =========================================================
 
 col1, col2, col3 = st.columns(3)
@@ -166,24 +216,24 @@ col1, col2, col3 = st.columns(3)
 with col1:
     st.markdown("""
     <div class="feature-card">
-    <h2>📩 Scam Detection</h2>
-    <p>Detect spam and scam messages instantly using AI.</p>
+    <h3>📩 Smart Detection</h3>
+    <p>AI-powered scam and spam message detection.</p>
     </div>
     """, unsafe_allow_html=True)
 
 with col2:
     st.markdown("""
     <div class="feature-card">
-    <h2>📊 Fraud Analytics</h2>
-    <p>Visualize fraud trends and targeted locations.</p>
+    <h3>📊 Fraud Analytics</h3>
+    <p>Analyze fraud trends and targeted locations.</p>
     </div>
     """, unsafe_allow_html=True)
 
 with col3:
     st.markdown("""
     <div class="feature-card">
-    <h2>🔐 Cyber Protection</h2>
-    <p>Stay protected from phishing and banking scams.</p>
+    <h3>🔐 Cyber Protection</h3>
+    <p>Protect yourself from phishing and online scams.</p>
     </div>
     """, unsafe_allow_html=True)
 
@@ -196,28 +246,17 @@ st.write("")
 
 st.markdown("## 📩 Scam Message Detection")
 
-col1, col2 = st.columns([2,1])
+st.markdown('<div class="card">', unsafe_allow_html=True)
 
-with col1:
+message = st.text_area(
+    "Enter Suspicious Message",
+    height=200,
+    placeholder="Paste suspicious SMS, Email or WhatsApp message here..."
+)
 
-    st.markdown('<div class="detect-box">', unsafe_allow_html=True)
+detect = st.button("Detect Message")
 
-    message = st.text_area(
-        "Enter suspicious message",
-        height=220,
-        placeholder="Paste suspicious SMS, email or WhatsApp message here..."
-    )
-
-    detect = st.button("Detect Message")
-
-    st.markdown('</div>', unsafe_allow_html=True)
-
-with col2:
-
-    st.image(
-        "https://cdn-icons-png.flaticon.com/512/2092/2092663.png",
-        width=300
-    )
+st.markdown('</div>', unsafe_allow_html=True)
 
 # =========================================================
 # DETECTION LOGIC
@@ -234,7 +273,7 @@ if detect:
         msg = message.lower()
         msg = re.sub(r'[^\w\s]', '', msg)
 
-        # vectorize
+        # vectorization
         data = vectorizer.transform([msg])
 
         # prediction
@@ -245,10 +284,9 @@ if detect:
         scam_prob = probability[0][1] * 100
 
         st.write("")
-        st.write("")
 
         # =========================================================
-        # RESULT SECTION
+        # RESULT
         # =========================================================
 
         st.markdown("## 🔎 Detection Result")
@@ -256,9 +294,9 @@ if detect:
         if prediction[0] == 1:
 
             st.markdown(f"""
-            <div class="result-scam">
+            <div class="scam-box">
             🚨 Scam Message Detected <br><br>
-            Confidence: {scam_prob:.2f}%
+            Confidence Score: {scam_prob:.2f}%
             </div>
             """, unsafe_allow_html=True)
 
@@ -267,55 +305,22 @@ if detect:
         else:
 
             st.markdown(f"""
-            <div class="result-safe">
+            <div class="safe-box">
             ✅ Safe Message <br><br>
-            Confidence: {100-scam_prob:.2f}%
+            Confidence Score: {100-scam_prob:.2f}%
             </div>
             """, unsafe_allow_html=True)
 
             st.progress(int(100-scam_prob))
 
+        # =========================================================
+        # USER MESSAGE
+        # =========================================================
+
         st.write("")
-
-        # =========================================================
-        # ENTERED MESSAGE
-        # =========================================================
-
         st.markdown("### 📄 Entered Message")
 
         st.info(message)
-
-        # =========================================================
-        # SUSPICIOUS KEYWORDS
-        # =========================================================
-
-        keywords = [
-            "otp",
-            "bank",
-            "kyc",
-            "winner",
-            "lottery",
-            "urgent",
-            "click",
-            "verify",
-            "account",
-            "money",
-            "loan",
-            "gift"
-        ]
-
-        found = []
-
-        for word in keywords:
-            if word in msg:
-                found.append(word)
-
-        st.markdown("### ⚠️ Suspicious Keywords")
-
-        if len(found) > 0:
-            st.write(found)
-        else:
-            st.success("No suspicious keywords detected")
 
 # =========================================================
 # DASHBOARD SECTION
@@ -335,39 +340,43 @@ with col1:
     st.metric("Total Fraud Cases", len(fraud_data))
 
 with col2:
-    top_location = fraud_data['location'].mode()[0]
-    st.metric("Most Targeted Area", top_location)
+    st.metric(
+        "Most Targeted Area",
+        fraud_data['location'].mode()[0]
+    )
 
 with col3:
-    top_fraud = fraud_data['fraud_type'].mode()[0]
-    st.metric("Most Common Fraud", top_fraud)
+    st.metric(
+        "Most Common Fraud",
+        fraud_data['fraud_type'].mode()[0]
+    )
+
+st.write("")
 
 # =========================================================
-# GRAPH SECTION
-# =========================================================
-
-# ---------------------------------------------------------
 # LOCATION GRAPH
-# ---------------------------------------------------------
+# =========================================================
 
 location_counts = fraud_data['location'].value_counts().head(10)
 
 fig1 = px.bar(
     x=location_counts.index,
     y=location_counts.values,
-    color=location_counts.values,
+    text=location_counts.values,
     title="Most Targeted Locations"
 )
 
 fig1.update_layout(
-    plot_bgcolor='white',
-    paper_bgcolor='white',
-    title_x=0.3
+    paper_bgcolor="#ffffff",
+    plot_bgcolor="#ffffff",
+    font_color="#0f172a",
+    title_font_size=22,
+    title_x=0.25
 )
 
-# ---------------------------------------------------------
+# =========================================================
 # FRAUD TYPE GRAPH
-# ---------------------------------------------------------
+# =========================================================
 
 fraud_counts = fraud_data['fraud_type'].value_counts()
 
@@ -378,44 +387,50 @@ fig2 = px.pie(
 )
 
 fig2.update_layout(
-    paper_bgcolor='white',
-    title_x=0.3
+    paper_bgcolor="#ffffff",
+    font_color="#0f172a",
+    title_font_size=22,
+    title_x=0.25
 )
 
-# ---------------------------------------------------------
+# =========================================================
 # AGE GRAPH
-# ---------------------------------------------------------
+# =========================================================
 
 fig3 = px.histogram(
     fraud_data,
     x='customer_age',
     nbins=20,
-    title='Customer Age Analysis'
+    title='Targeted Age Groups'
 )
 
 fig3.update_layout(
-    plot_bgcolor='white',
-    paper_bgcolor='white',
-    title_x=0.3
+    paper_bgcolor="#ffffff",
+    plot_bgcolor="#ffffff",
+    font_color="#0f172a",
+    title_font_size=22,
+    title_x=0.25
 )
 
-# ---------------------------------------------------------
+# =========================================================
 # CARD TYPE GRAPH
-# ---------------------------------------------------------
+# =========================================================
 
 card_counts = fraud_data['card_type'].value_counts()
 
 fig4 = px.bar(
     x=card_counts.index,
     y=card_counts.values,
-    color=card_counts.values,
+    text=card_counts.values,
     title='Card Type Fraud Analysis'
 )
 
 fig4.update_layout(
-    plot_bgcolor='white',
-    paper_bgcolor='white',
-    title_x=0.3
+    paper_bgcolor="#ffffff",
+    plot_bgcolor="#ffffff",
+    font_color="#0f172a",
+    title_font_size=22,
+    title_x=0.2
 )
 
 # =========================================================
@@ -447,31 +462,35 @@ purchase_counts = fraud_data['purchase_category'].value_counts()
 fig5 = px.bar(
     x=purchase_counts.index,
     y=purchase_counts.values,
-    color=purchase_counts.values,
+    text=purchase_counts.values,
     title="Purchase Category Fraud Analysis"
 )
 
 fig5.update_layout(
-    plot_bgcolor='white',
-    paper_bgcolor='white',
-    title_x=0.3
+    paper_bgcolor="#ffffff",
+    plot_bgcolor="#ffffff",
+    font_color="#0f172a",
+    title_font_size=22,
+    title_x=0.2
 )
 
 st.plotly_chart(fig5, use_container_width=True)
 
 # =========================================================
-# FRAUD AMOUNT ANALYSIS
+# AMOUNT ANALYSIS
 # =========================================================
 
 fig6 = px.box(
     fraud_data,
     y='amount',
-    title="Fraud Amount Distribution"
+    title="Fraud Amount Analysis"
 )
 
 fig6.update_layout(
-    plot_bgcolor='white',
-    paper_bgcolor='white',
+    paper_bgcolor="#ffffff",
+    plot_bgcolor="#ffffff",
+    font_color="#0f172a",
+    title_font_size=22,
     title_x=0.3
 )
 
@@ -487,9 +506,8 @@ st.write("---")
 st.markdown("""
 <center>
 
-<h4>
-Developed using Python, Machine Learning, NLP,
-Streamlit & Fraud Analytics
+<h4 style='color:#475569;'>
+AI-Powered Scam Detection & Fraud Analytics System
 </h4>
 
 </center>
