@@ -21,15 +21,13 @@ st.set_page_config(
 st.markdown("""
 <style>
 
-body {
-    background-color: #f7f9fc;
+/* Background */
+
+.stApp {
+    background-color: #f5f6fb;
 }
 
-.main {
-    background-color: #f7f9fc;
-}
-
-/* Hide Streamlit Branding */
+/* Hide Streamlit */
 
 #MainMenu {
     visibility: hidden;
@@ -43,10 +41,10 @@ header {
     visibility: hidden;
 }
 
-/* Main Container */
+/* Main Layout */
 
 .block-container {
-    padding-top: 2rem;
+    padding-top: 1.5rem;
     padding-left: 3rem;
     padding-right: 3rem;
 }
@@ -54,91 +52,89 @@ header {
 /* Hero Section */
 
 .hero {
-    background: linear-gradient(135deg, #dbeafe, #e0f2fe);
-    padding: 50px;
-    border-radius: 25px;
-    text-align: center;
-    margin-bottom: 40px;
-    border: 1px solid #cbd5e1;
+    background: linear-gradient(135deg, #eef2ff, #f5f3ff);
+    padding: 45px;
+    border-radius: 30px;
+    margin-bottom: 30px;
+    border: 1px solid #e2e8f0;
 }
 
 .hero h1 {
-    color: #0f172a;
-    font-size: 55px;
-    font-weight: bold;
+    color: #1e293b;
+    font-size: 52px;
+    font-weight: 700;
+    text-align: center;
 }
 
 .hero p {
-    color: #334155;
-    font-size: 22px;
-}
-
-/* Cards */
-
-.card {
-    background-color: white;
-    padding: 30px;
-    border-radius: 20px;
-    box-shadow: 0px 4px 20px rgba(0,0,0,0.06);
-    border: 1px solid #e2e8f0;
+    color: #64748b;
+    font-size: 20px;
+    text-align: center;
 }
 
 /* Feature Cards */
 
 .feature-card {
     background-color: white;
-    padding: 25px;
-    border-radius: 20px;
+    padding: 22px;
+    border-radius: 22px;
     text-align: center;
-    box-shadow: 0px 4px 15px rgba(0,0,0,0.05);
     border: 1px solid #e2e8f0;
+    box-shadow: 0px 4px 15px rgba(0,0,0,0.04);
 }
 
 .feature-card h3 {
-    color: #0f172a;
+    color: #1e293b;
 }
 
 .feature-card p {
-    color: #475569;
+    color: #64748b;
+}
+
+/* Detection Box */
+
+.detect-box {
+    background-color: white;
+    padding: 30px;
+    border-radius: 25px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0px 4px 15px rgba(0,0,0,0.04);
 }
 
 /* Result Cards */
 
 .safe-box {
-    background-color: #dcfce7;
+    background: #dcfce7;
     color: #166534;
     padding: 25px;
-    border-radius: 15px;
+    border-radius: 18px;
     font-size: 22px;
     font-weight: bold;
-    border: 1px solid #bbf7d0;
 }
 
 .scam-box {
-    background-color: #fee2e2;
+    background: #fee2e2;
     color: #991b1b;
     padding: 25px;
-    border-radius: 15px;
+    border-radius: 18px;
     font-size: 22px;
     font-weight: bold;
-    border: 1px solid #fecaca;
 }
 
-/* Buttons */
+/* Button */
 
 .stButton button {
     width: 100%;
-    height: 55px;
-    border-radius: 12px;
-    border: none;
-    background-color: #2563eb;
+    height: 52px;
+    background: linear-gradient(135deg, #7c3aed, #6366f1);
     color: white;
+    border-radius: 14px;
+    border: none;
     font-size: 18px;
-    font-weight: bold;
+    font-weight: 600;
 }
 
 .stButton button:hover {
-    background-color: #1d4ed8;
     color: white;
 }
 
@@ -146,14 +142,8 @@ header {
 
 textarea {
     border-radius: 15px !important;
-    border: 2px solid #cbd5e1 !important;
-    color: #0f172a !important;
-}
-
-/* Headers */
-
-h1, h2, h3 {
-    color: #0f172a !important;
+    border: 2px solid #e2e8f0 !important;
+    color: #1e293b !important;
 }
 
 /* Metrics */
@@ -163,15 +153,21 @@ h1, h2, h3 {
     border-radius: 18px;
     padding: 20px;
     border: 1px solid #e2e8f0;
-    box-shadow: 0px 4px 10px rgba(0,0,0,0.04);
+    box-shadow: 0px 4px 15px rgba(0,0,0,0.04);
 }
 
 [data-testid="metric-container"] label {
-    color: #475569 !important;
+    color: #64748b !important;
 }
 
 [data-testid="metric-container"] div {
-    color: #0f172a !important;
+    color: #1e293b !important;
+}
+
+/* Headers */
+
+h1, h2, h3 {
+    color: #1e293b !important;
 }
 
 </style>
@@ -200,8 +196,8 @@ st.markdown("""
 <h1>🛡️ AI Scam Detection & Fraud Analytics</h1>
 
 <p>
-Detect OTP Fraud, KYC Scam, Phishing,
-Banking Fraud and Suspicious Messages using AI
+Detect OTP Fraud, KYC Scam, Banking Fraud,
+Phishing and Online Scam Messages using AI
 </p>
 
 </div>
@@ -225,15 +221,15 @@ with col2:
     st.markdown("""
     <div class="feature-card">
     <h3>📊 Fraud Analytics</h3>
-    <p>Analyze fraud trends and targeted locations.</p>
+    <p>Visualize fraud trends and targeted groups.</p>
     </div>
     """, unsafe_allow_html=True)
 
 with col3:
     st.markdown("""
     <div class="feature-card">
-    <h3>🔐 Cyber Protection</h3>
-    <p>Protect yourself from phishing and online scams.</p>
+    <h3>🔐 Cyber Security</h3>
+    <p>Protect users from phishing and cyber scams.</p>
     </div>
     """, unsafe_allow_html=True)
 
@@ -246,12 +242,12 @@ st.write("")
 
 st.markdown("## 📩 Scam Message Detection")
 
-st.markdown('<div class="card">', unsafe_allow_html=True)
+st.markdown('<div class="detect-box">', unsafe_allow_html=True)
 
 message = st.text_area(
-    "Enter Suspicious Message",
-    height=200,
-    placeholder="Paste suspicious SMS, Email or WhatsApp message here..."
+    "Enter suspicious message",
+    height=180,
+    placeholder="Paste suspicious SMS, Email or WhatsApp message..."
 )
 
 detect = st.button("Detect Message")
@@ -269,14 +265,11 @@ if detect:
 
     else:
 
-        # preprocessing
         msg = message.lower()
         msg = re.sub(r'[^\w\s]', '', msg)
 
-        # vectorization
         data = vectorizer.transform([msg])
 
-        # prediction
         prediction = model.predict(data)
 
         probability = model.predict_proba(data)
@@ -284,11 +277,6 @@ if detect:
         scam_prob = probability[0][1] * 100
 
         st.write("")
-
-        # =========================================================
-        # RESULT
-        # =========================================================
-
         st.markdown("## 🔎 Detection Result")
 
         if prediction[0] == 1:
@@ -300,8 +288,6 @@ if detect:
             </div>
             """, unsafe_allow_html=True)
 
-            st.progress(int(scam_prob))
-
         else:
 
             st.markdown(f"""
@@ -311,15 +297,8 @@ if detect:
             </div>
             """, unsafe_allow_html=True)
 
-            st.progress(int(100-scam_prob))
-
-        # =========================================================
-        # USER MESSAGE
-        # =========================================================
-
         st.write("")
         st.markdown("### 📄 Entered Message")
-
         st.info(message)
 
 # =========================================================
@@ -337,83 +316,95 @@ st.markdown("## 📊 Fraud Analytics Dashboard")
 col1, col2, col3 = st.columns(3)
 
 with col1:
-    st.metric("Total Fraud Cases", len(fraud_data))
+    st.metric("Total Cases", len(fraud_data))
 
 with col2:
     st.metric(
-        "Most Targeted Area",
+        "Top Fraud Area",
         fraud_data['location'].mode()[0]
     )
 
 with col3:
     st.metric(
-        "Most Common Fraud",
+        "Top Fraud Type",
         fraud_data['fraud_type'].mode()[0]
     )
 
 st.write("")
 
 # =========================================================
-# LOCATION GRAPH
-# =========================================================
-
-location_counts = fraud_data['location'].value_counts().head(10)
-
-fig1 = px.bar(
-    x=location_counts.index,
-    y=location_counts.values,
-    text=location_counts.values,
-    title="Most Targeted Locations"
-)
-
-fig1.update_layout(
-    paper_bgcolor="#ffffff",
-    plot_bgcolor="#ffffff",
-    font_color="#0f172a",
-    title_font_size=22,
-    title_x=0.25
-)
-
-# =========================================================
-# FRAUD TYPE GRAPH
+# GRAPH 1 - FRAUD TYPE
 # =========================================================
 
 fraud_counts = fraud_data['fraud_type'].value_counts()
 
-fig2 = px.pie(
+fig1 = px.pie(
     values=fraud_counts.values,
     names=fraud_counts.index,
-    title="Fraud Type Distribution"
+    hole=0.5,
+    color_discrete_sequence=[
+        "#8b5cf6",
+        "#6366f1",
+        "#60a5fa",
+        "#c084fc",
+        "#f472b6"
+    ]
 )
 
-fig2.update_layout(
+fig1.update_layout(
+    title="Fraud Type Distribution",
+    height=320,
     paper_bgcolor="#ffffff",
-    font_color="#0f172a",
-    title_font_size=22,
-    title_x=0.25
+    font_color="#1e293b",
+    title_x=0.2
 )
 
 # =========================================================
-# AGE GRAPH
+# GRAPH 2 - LOCATION
+# =========================================================
+
+location_counts = fraud_data['location'].value_counts().head(6)
+
+fig2 = px.bar(
+    x=location_counts.index,
+    y=location_counts.values,
+    text=location_counts.values,
+    color=location_counts.values,
+    color_continuous_scale="purples"
+)
+
+fig2.update_layout(
+    title="Most Targeted Locations",
+    height=320,
+    paper_bgcolor="#ffffff",
+    plot_bgcolor="#ffffff",
+    font_color="#1e293b",
+    coloraxis_showscale=False,
+    title_x=0.2
+)
+
+# =========================================================
+# GRAPH 3 - AGE GROUP
 # =========================================================
 
 fig3 = px.histogram(
     fraud_data,
-    x='customer_age',
-    nbins=20,
-    title='Targeted Age Groups'
+    x="customer_age",
+    nbins=15,
+    color_discrete_sequence=["#8b5cf6"]
 )
 
 fig3.update_layout(
+    title="Targeted Age Groups",
+    height=320,
     paper_bgcolor="#ffffff",
     plot_bgcolor="#ffffff",
-    font_color="#0f172a",
-    title_font_size=22,
-    title_x=0.25
+    font_color="#1e293b",
+    title_x=0.2
 )
 
 # =========================================================
-# CARD TYPE GRAPH
+# GRAPH 4 - CARD TYPE
 # =========================================================
 
 card_counts = fraud_data['card_type'].value_counts()
@@ -422,14 +413,17 @@ fig4 = px.bar(
     x=card_counts.index,
     y=card_counts.values,
     text=card_counts.values,
-    title='Card Type Fraud Analysis'
+    color=card_counts.values,
+    color_continuous_scale="blues"
 )
 
 fig4.update_layout(
+    title="Card Type Fraud Analysis",
+    height=320,
     paper_bgcolor="#ffffff",
     plot_bgcolor="#ffffff",
-    font_color="#0f172a",
-    title_font_size=22,
+    font_color="#1e293b",
+    coloraxis_showscale=False,
     title_x=0.2
 )
 
@@ -463,38 +457,21 @@ fig5 = px.bar(
     x=purchase_counts.index,
     y=purchase_counts.values,
     text=purchase_counts.values,
-    title="Purchase Category Fraud Analysis"
+    color=purchase_counts.values,
+    color_continuous_scale="tealgrn"
 )
 
 fig5.update_layout(
+    title="Purchase Category Fraud Analysis",
+    height=320,
     paper_bgcolor="#ffffff",
     plot_bgcolor="#ffffff",
-    font_color="#0f172a",
-    title_font_size=22,
+    font_color="#1e293b",
+    coloraxis_showscale=False,
     title_x=0.2
 )
 
 st.plotly_chart(fig5, use_container_width=True)
-
-# =========================================================
-# AMOUNT ANALYSIS
-# =========================================================
-
-fig6 = px.box(
-    fraud_data,
-    y='amount',
-    title="Fraud Amount Analysis"
-)
-
-fig6.update_layout(
-    paper_bgcolor="#ffffff",
-    plot_bgcolor="#ffffff",
-    font_color="#0f172a",
-    title_font_size=22,
-    title_x=0.3
-)
-
-st.plotly_chart(fig6, use_container_width=True)
 
 # =========================================================
 # FOOTER
@@ -506,8 +483,8 @@ st.write("---")
 st.markdown("""
 <center>
 
-<h4 style='color:#475569;'>
-AI-Powered Scam Detection & Fraud Analytics System
+<h4 style='color:#64748b;'>
+AI Powered Scam Detection & Fraud Analytics System
 </h4>
 
 </center>
