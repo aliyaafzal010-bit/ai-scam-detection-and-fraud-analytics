@@ -35,16 +35,21 @@ st.markdown("""
 <style>
 
 .stApp{
-    background-color:#f5f7fb;
+    background: linear-gradient(
+        135deg,
+        #f8f9ff,
+        #eef2ff,
+        #f5f3ff
+    );
 }
 
-/* Hide Streamlit menu */
+/* Hide Streamlit Menu */
 
 #MainMenu {visibility:hidden;}
 footer {visibility:hidden;}
 header {visibility:hidden;}
 
-/* Main spacing */
+/* Main Padding */
 
 .block-container{
     padding-top:2rem;
@@ -52,109 +57,125 @@ header {visibility:hidden;}
     padding-right:3rem;
 }
 
-/* Hero */
+/* HERO SECTION */
 
 .hero{
-    background:linear-gradient(135deg,#eef2ff,#f5f3ff);
+    background:linear-gradient(
+        135deg,
+        #dbeafe,
+        #ede9fe,
+        #fce7f3
+    );
+
     border-radius:30px;
-    padding:50px;
+    padding:55px;
     text-align:center;
     border:1px solid #dbe4ff;
-    margin-bottom:30px;
+    margin-bottom:35px;
 }
 
 .hero h1{
-    color:#1e293b;
+    color:#0f172a;
     font-size:52px;
     font-weight:700;
 }
 
 .hero p{
-    color:#475569;
+    color:#334155;
     font-size:20px;
+    margin-top:10px;
 }
 
-/* Feature Cards */
+/* FEATURE CARDS */
 
 .feature-card{
-    background:white;
+    background:#ffffffcc;
     border-radius:22px;
-    padding:25px;
+    padding:28px;
     text-align:center;
     border:1px solid #e2e8f0;
-    box-shadow:0px 4px 12px rgba(0,0,0,0.05);
+    box-shadow:0px 6px 18px rgba(99,102,241,0.08);
 }
 
 .feature-card h3{
     color:#1e293b;
+    font-size:28px;
 }
 
 .feature-card p{
     color:#64748b;
+    font-size:16px;
 }
 
-/* Detection Box */
+/* DETECTION BOX */
 
 .detect-box{
     background:white;
-    padding:25px;
-    border-radius:22px;
-    border:1px solid #e2e8f0;
-    box-shadow:0px 4px 12px rgba(0,0,0,0.05);
+    padding:28px;
+    border-radius:24px;
+    border:1px solid #dbe4ff;
+    box-shadow:0px 6px 18px rgba(99,102,241,0.08);
 }
 
-/* Text Area */
+/* TEXT AREA */
 
 textarea{
     background:#ffffff !important;
-    color:#1e293b !important;
-    border-radius:16px !important;
-    border:2px solid #dbe4ff !important;
+    color:#0f172a !important;
+    border-radius:18px !important;
+    border:2px solid #c7d2fe !important;
     font-size:17px !important;
 }
 
-/* Button */
+/* BUTTON */
 
 .stButton button{
     width:100%;
     height:52px;
     border:none;
     border-radius:14px;
-    background:linear-gradient(135deg,#7c3aed,#6366f1);
+    background:linear-gradient(
+        135deg,
+        #7c3aed,
+        #6366f1
+    );
+
     color:white;
     font-size:18px;
     font-weight:600;
 }
 
-/* Result Cards */
+/* SAFE RESULT */
 
 .safe-box{
     background:#dcfce7;
     color:#166534;
-    padding:22px;
+    padding:24px;
     border-radius:18px;
     font-size:22px;
     font-weight:600;
 }
+
+/* SCAM RESULT */
 
 .scam-box{
     background:#fee2e2;
     color:#991b1b;
-    padding:22px;
+    padding:24px;
     border-radius:18px;
     font-size:22px;
     font-weight:600;
 }
 
-/* Awareness Box */
+/* AWARENESS BOX */
 
 .awareness{
     background:white;
-    border-radius:20px;
+    border-radius:22px;
     padding:25px;
     border:1px solid #e2e8f0;
     margin-top:20px;
-    box-shadow:0px 4px 12px rgba(0,0,0,0.05);
+    box-shadow:0px 6px 18px rgba(99,102,241,0.08);
 }
 
 .awareness h3{
@@ -167,31 +188,31 @@ textarea{
     font-size:16px;
 }
 
-/* Metrics */
+/* METRICS */
 
 [data-testid="metric-container"]{
     background:white;
-    border-radius:18px;
-    padding:20px;
-    border:1px solid #e2e8f0;
-    box-shadow:0px 4px 12px rgba(0,0,0,0.05);
+    border-radius:20px;
+    padding:18px;
+    border:1px solid #dbe4ff;
+    box-shadow:0px 6px 18px rgba(99,102,241,0.08);
 }
 
-/* Graph Containers */
+/* GRAPH CARDS */
 
 .graph-card{
     background:white;
-    padding:15px;
-    border-radius:20px;
-    border:1px solid #e2e8f0;
-    box-shadow:0px 4px 12px rgba(0,0,0,0.05);
+    padding:18px;
+    border-radius:22px;
+    border:1px solid #dbe4ff;
+    box-shadow:0px 6px 18px rgba(99,102,241,0.08);
     margin-bottom:20px;
 }
 
-/* Headings */
+/* HEADINGS */
 
 h1,h2,h3{
-    color:#1e293b !important;
+    color:#0f172a !important;
 }
 
 </style>
@@ -207,8 +228,8 @@ st.markdown("""
 <h1>🛡️ AI Scam Detection & Awareness System</h1>
 
 <p>
-Protect yourself from OTP Fraud, KYC Scam, Banking Fraud,
-Phishing and Online Scam Messages using Artificial Intelligence
+Detect OTP Fraud, Banking Scam, KYC Fraud, Phishing
+and Suspicious Messages using Artificial Intelligence
 </p>
 
 </div>
@@ -232,7 +253,7 @@ with c2:
     st.markdown("""
     <div class="feature-card">
     <h3>📊 Fraud Analytics</h3>
-    <p>Visualize targeted groups and fraud trends.</p>
+    <p>Visualize fraud trends and targeted groups.</p>
     </div>
     """, unsafe_allow_html=True)
 
@@ -240,7 +261,7 @@ with c3:
     st.markdown("""
     <div class="feature-card">
     <h3>🔐 Cyber Awareness</h3>
-    <p>Spread awareness against phishing and cyber scams.</p>
+    <p>Stay protected from phishing and cyber scams.</p>
     </div>
     """, unsafe_allow_html=True)
 
@@ -294,19 +315,17 @@ if detect:
         </div>
         """, unsafe_allow_html=True)
 
-        # Awareness Section
-
         st.markdown("""
         <div class="awareness">
 
         <h3>⚠️ Scam Awareness & Prevention Tips</h3>
 
         <ul>
-        <li>Never share OTP, CVV or bank details with anyone.</li>
-        <li>Do not click suspicious links received through SMS or WhatsApp.</li>
-        <li>Banks never ask for personal information on calls.</li>
-        <li>Report cyber fraud immediately on Cyber Helpline 1930.</li>
-        <li>Verify KYC requests only from official banking apps.</li>
+        <li>Never share OTP, CVV or bank details.</li>
+        <li>Do not click suspicious links.</li>
+        <li>Banks never ask for personal details on calls.</li>
+        <li>Report cyber fraud on helpline 1930.</li>
+        <li>Verify KYC requests from official apps only.</li>
         </ul>
 
         </div>
@@ -324,21 +343,21 @@ if detect:
         st.markdown("""
         <div class="awareness">
 
-        <h3>🛡️ Stay Safe Online</h3>
+        <h3>🛡️ Cyber Safety Tips</h3>
 
         <ul>
-        <li>Always verify unknown messages before responding.</li>
-        <li>Use official banking and payment applications only.</li>
+        <li>Always verify unknown messages.</li>
+        <li>Use secure banking applications only.</li>
         <li>Avoid sharing personal information online.</li>
-        <li>Enable two-factor authentication for security.</li>
-        <li>Stay aware of phishing and fake lottery scams.</li>
+        <li>Enable two-factor authentication.</li>
+        <li>Stay alert from phishing scams.</li>
         </ul>
 
         </div>
         """, unsafe_allow_html=True)
 
 # =========================================================
-# ANALYTICS SECTION
+# DASHBOARD SECTION
 # =========================================================
 
 st.write("")
@@ -369,7 +388,7 @@ with m3:
 st.write("")
 
 # =========================================================
-# GRAPH 1
+# GRAPH 1 - PIE
 # =========================================================
 
 fraud_counts = fraud_data['fraud_type'].value_counts()
@@ -383,20 +402,31 @@ fig1 = px.pie(
         "#6366f1",
         "#8b5cf6",
         "#ec4899",
-        "#60a5fa"
+        "#38bdf8"
     ]
 )
 
 fig1.update_layout(
-    height=320,
+    height=330,
     paper_bgcolor="white",
-    font_color="#1e293b",
+    plot_bgcolor="white",
+    font=dict(
+        color="#111827",
+        size=14
+    ),
     title="Fraud Type Distribution",
-    title_font_size=20
+    title_font=dict(
+        size=22,
+        color="#111827"
+    ),
+    legend_font=dict(
+        size=13,
+        color="#111827"
+    )
 )
 
 # =========================================================
-# GRAPH 2
+# GRAPH 2 - LOCATION
 # =========================================================
 
 location_counts = fraud_data['location'].value_counts().head(6)
@@ -406,41 +436,69 @@ fig2 = px.bar(
     y=location_counts.values,
     text=location_counts.values,
     color=location_counts.values,
-    color_continuous_scale="purples"
+    color_continuous_scale=[
+        "#c4b5fd",
+        "#8b5cf6",
+        "#6366f1"
+    ]
 )
 
 fig2.update_layout(
-    height=320,
+    height=330,
     paper_bgcolor="white",
     plot_bgcolor="white",
-    font_color="#1e293b",
+    font=dict(
+        color="#111827",
+        size=14
+    ),
     title="Most Targeted Locations",
-    title_font_size=20,
+    title_font=dict(
+        size=22,
+        color="#111827"
+    ),
+    xaxis=dict(
+        tickfont=dict(size=13,color="#111827")
+    ),
+    yaxis=dict(
+        tickfont=dict(size=13,color="#111827")
+    ),
     coloraxis_showscale=False
 )
 
 # =========================================================
-# GRAPH 3
+# GRAPH 3 - AGE
 # =========================================================
 
 fig3 = px.histogram(
     fraud_data,
     x="customer_age",
     nbins=15,
-    color_discrete_sequence=["#8b5cf6"]
+    color_discrete_sequence=["#7c3aed"]
 )
 
 fig3.update_layout(
-    height=320,
+    height=330,
     paper_bgcolor="white",
     plot_bgcolor="white",
-    font_color="#1e293b",
+    font=dict(
+        color="#111827",
+        size=14
+    ),
     title="Targeted Age Groups",
-    title_font_size=20
+    title_font=dict(
+        size=22,
+        color="#111827"
+    ),
+    xaxis=dict(
+        tickfont=dict(size=13,color="#111827")
+    ),
+    yaxis=dict(
+        tickfont=dict(size=13,color="#111827")
+    )
 )
 
 # =========================================================
-# GRAPH 4
+# GRAPH 4 - CARD TYPE
 # =========================================================
 
 card_counts = fraud_data['card_type'].value_counts()
@@ -454,12 +512,24 @@ fig4 = px.bar(
 )
 
 fig4.update_layout(
-    height=320,
+    height=330,
     paper_bgcolor="white",
     plot_bgcolor="white",
-    font_color="#1e293b",
+    font=dict(
+        color="#111827",
+        size=14
+    ),
     title="Card Type Fraud Analysis",
-    title_font_size=20,
+    title_font=dict(
+        size=22,
+        color="#111827"
+    ),
+    xaxis=dict(
+        tickfont=dict(size=13,color="#111827")
+    ),
+    yaxis=dict(
+        tickfont=dict(size=13,color="#111827")
+    ),
     coloraxis_showscale=False
 )
 
@@ -506,12 +576,24 @@ fig5 = px.bar(
 )
 
 fig5.update_layout(
-    height=320,
+    height=330,
     paper_bgcolor="white",
     plot_bgcolor="white",
-    font_color="#1e293b",
+    font=dict(
+        color="#111827",
+        size=14
+    ),
     title="Purchase Category Fraud Analysis",
-    title_font_size=20,
+    title_font=dict(
+        size=22,
+        color="#111827"
+    ),
+    xaxis=dict(
+        tickfont=dict(size=13,color="#111827")
+    ),
+    yaxis=dict(
+        tickfont=dict(size=13,color="#111827")
+    ),
     coloraxis_showscale=False
 )
 
@@ -520,7 +602,7 @@ st.plotly_chart(fig5, use_container_width=True)
 st.markdown('</div>', unsafe_allow_html=True)
 
 # =========================================================
-# SAFETY AWARENESS SECTION
+# CYBER SAFETY SECTION
 # =========================================================
 
 st.write("")
@@ -540,7 +622,7 @@ with a2:
     st.markdown("""
     <div class="feature-card">
     <h3>🔗 Avoid Suspicious Links</h3>
-    <p>Do not open unknown or shortened links.</p>
+    <p>Do not open unknown or fake links.</p>
     </div>
     """, unsafe_allow_html=True)
 
@@ -548,7 +630,7 @@ with a3:
     st.markdown("""
     <div class="feature-card">
     <h3>☎️ Report Fraud Quickly</h3>
-    <p>Report cyber fraud immediately on helpline 1930.</p>
+    <p>Call cyber helpline 1930 immediately.</p>
     </div>
     """, unsafe_allow_html=True)
 
@@ -563,7 +645,8 @@ st.markdown("""
 <center>
 
 <h4 style='color:#64748b;'>
-Developed using Python, Streamlit, Machine Learning, NLP & Fraud Analytics
+Developed using Python, Streamlit, Machine Learning,
+NLP & Fraud Analytics
 </h4>
 
 </center>
