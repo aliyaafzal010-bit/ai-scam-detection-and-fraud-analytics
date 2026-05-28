@@ -57,8 +57,8 @@ header {visibility:hidden;}
 
 .block-container{
     padding-top:2rem;
-    padding-left:3rem;
-    padding-right:3rem;
+    padding-left:2rem;
+    padding-right:2rem;
 }
 
 /* =========================================================
@@ -74,22 +74,22 @@ HERO SECTION
     );
 
     border-radius:30px;
-    padding:55px;
+    padding:50px;
     text-align:center;
     border:1px solid #dbe4ff;
-    margin-bottom:35px;
+    margin-bottom:30px;
 }
 
 .hero h1{
     color:#0f172a;
-    font-size:52px;
+    font-size:48px;
     font-weight:700;
 }
 
 .hero p{
-    color:#334155;
-    font-size:20px;
-    margin-top:10px;
+    color:#475569;
+    font-size:18px;
+    margin-top:12px;
 }
 
 /* =========================================================
@@ -97,22 +97,22 @@ FEATURE CARDS
 ========================================================= */
 
 .feature-card{
-    background:#ffffffcc;
+    background:#ffffff;
     border-radius:22px;
-    padding:28px;
+    padding:25px;
     text-align:center;
-    border:1px solid #e2e8f0;
-    box-shadow:0px 6px 18px rgba(99,102,241,0.08);
+    border:1px solid #dbe4ff;
+    box-shadow:0px 4px 12px rgba(99,102,241,0.08);
 }
 
 .feature-card h3{
-    color:#1e293b;
-    font-size:28px;
+    color:#0f172a;
+    font-size:26px;
 }
 
 .feature-card p{
-    color:#64748b;
-    font-size:16px;
+    color:#475569;
+    font-size:15px;
 }
 
 /* =========================================================
@@ -121,23 +121,38 @@ DETECTION BOX
 
 .detect-box{
     background:white;
-    padding:28px;
+    padding:24px;
     border-radius:24px;
-    border:0.8px solid #dbe4ff;
-    box-shadow:0px 6px 18px rgba(99,102,241,0.08);
+    border:1px solid #dbe4ff;
+    box-shadow:0px 4px 12px rgba(99,102,241,0.08);
 }
 
 /* =========================================================
-TEXT AREA
+TEXTAREA
 ========================================================= */
 
 textarea{
     background:#ffffff !important;
     color:#0f172a !important;
-    border-radius:18px !important;
+    border-radius:16px !important;
     border:1px solid #c7d2fe !important;
-    font-size:17px !important;
+    font-size:16px !important;
     caret-color:#7c3aed !important;
+}
+
+/* REMOVE RED BORDER */
+
+textarea:focus{
+    border:1px solid #8b5cf6 !important;
+    box-shadow:0 0 0 1px #8b5cf6 !important;
+    outline:none !important;
+}
+
+/* PLACEHOLDER */
+
+textarea::placeholder{
+    color:#64748b !important;
+    opacity:1 !important;
 }
 
 /* =========================================================
@@ -146,7 +161,7 @@ BUTTON
 
 .stButton button{
     width:100%;
-    height:52px;
+    height:50px;
     border:none;
     border-radius:14px;
 
@@ -157,7 +172,7 @@ BUTTON
     );
 
     color:white;
-    font-size:18px;
+    font-size:17px;
     font-weight:600;
 }
 
@@ -168,18 +183,18 @@ RESULT BOXES
 .safe-box{
     background:#dcfce7;
     color:#166534;
-    padding:24px;
+    padding:22px;
     border-radius:18px;
-    font-size:22px;
+    font-size:21px;
     font-weight:600;
 }
 
 .scam-box{
     background:#fee2e2;
     color:#991b1b;
-    padding:24px;
+    padding:22px;
     border-radius:18px;
-    font-size:22px;
+    font-size:21px;
     font-weight:600;
 }
 
@@ -190,10 +205,10 @@ AWARENESS BOX
 .awareness{
     background:white;
     border-radius:22px;
-    padding:25px;
-    border:1px solid #e2e8f0;
+    padding:24px;
+    border:1px solid #dbe4ff;
     margin-top:20px;
-    box-shadow:0px 6px 18px rgba(99,102,241,0.08);
+    box-shadow:0px 4px 12px rgba(99,102,241,0.08);
 }
 
 .awareness h3{
@@ -202,30 +217,35 @@ AWARENESS BOX
 
 .awareness li{
     color:#334155;
-    margin-bottom:12px;
-    font-size:16px;
+    margin-bottom:10px;
+    font-size:15px;
 }
 
 /* =========================================================
-METRICS
+METRIC CARDS
 ========================================================= */
 
 [data-testid="metric-container"]{
     background:white;
-    border-radius:20px;
+    border-radius:18px;
     padding:18px;
     border:1px solid #dbe4ff;
-    box-shadow:0px 6px 18px rgba(99,102,241,0.08);
+    box-shadow:0px 4px 12px rgba(99,102,241,0.08);
 }
+
+/* METRIC LABEL */
 
 [data-testid="metric-container"] label{
-    color:#111827 !important;
+    color:#334155 !important;
+    font-size:15px !important;
     font-weight:600 !important;
-    font-size:16px !important;
 }
 
-[data-testid="metric-container"] div{
+/* METRIC VALUE */
+
+[data-testid="metric-container"] [data-testid="stMetricValue"]{
     color:#0f172a !important;
+    font-size:34px !important;
     font-weight:700 !important;
 }
 
@@ -235,10 +255,10 @@ GRAPH CARDS
 
 .graph-card{
     background:white;
-    padding:18px;
+    padding:12px;
     border-radius:22px;
     border:1px solid #dbe4ff;
-    box-shadow:0px 6px 18px rgba(99,102,241,0.08);
+    box-shadow:0px 4px 12px rgba(99,102,241,0.08);
     margin-bottom:20px;
 }
 
@@ -280,7 +300,7 @@ with c1:
     st.markdown("""
     <div class="feature-card">
     <h3>📩 Smart Detection</h3>
-    <p>AI-powered scam and spam message detection system.</p>
+    <p>AI-powered scam and spam detection.</p>
     </div>
     """, unsafe_allow_html=True)
 
@@ -288,7 +308,7 @@ with c2:
     st.markdown("""
     <div class="feature-card">
     <h3>📊 Fraud Analytics</h3>
-    <p>Visualize fraud trends and targeted groups.</p>
+    <p>Visualize fraud trends and patterns.</p>
     </div>
     """, unsafe_allow_html=True)
 
@@ -296,7 +316,7 @@ with c3:
     st.markdown("""
     <div class="feature-card">
     <h3>🔐 Cyber Awareness</h3>
-    <p>Stay protected from phishing and cyber scams.</p>
+    <p>Stay protected from cyber scams.</p>
     </div>
     """, unsafe_allow_html=True)
 
@@ -313,7 +333,7 @@ st.markdown('<div class="detect-box">', unsafe_allow_html=True)
 
 message = st.text_area(
     "Enter Your Message",
-    height=140,
+    height=110,
     placeholder="Paste suspicious SMS, Email or WhatsApp message here..."
 )
 
@@ -353,14 +373,14 @@ if detect:
         st.markdown("""
         <div class="awareness">
 
-        <h3>⚠️ Scam Awareness & Prevention Tips</h3>
+        <h3>⚠️ Scam Awareness Tips</h3>
 
         <ul>
         <li>Never share OTP, CVV or bank details.</li>
         <li>Do not click suspicious links.</li>
-        <li>Banks never ask for personal details on calls.</li>
-        <li>Report cyber fraud on helpline 1930.</li>
         <li>Verify KYC requests from official apps only.</li>
+        <li>Report cyber fraud on helpline 1930.</li>
+        <li>Banks never ask for personal details.</li>
         </ul>
 
         </div>
@@ -382,8 +402,8 @@ if detect:
 
         <ul>
         <li>Always verify unknown messages.</li>
-        <li>Use secure banking applications only.</li>
-        <li>Avoid sharing personal information online.</li>
+        <li>Use trusted banking applications.</li>
+        <li>Avoid sharing sensitive information online.</li>
         <li>Enable two-factor authentication.</li>
         <li>Stay alert from phishing scams.</li>
         </ul>
@@ -397,6 +417,7 @@ if detect:
 
 st.write("")
 st.write("")
+
 st.markdown("## 📊 Fraud Analytics Dashboard")
 
 # =========================================================
@@ -423,7 +444,7 @@ with m3:
 st.write("")
 
 # =========================================================
-# GRAPH 1 - FRAUD TYPE
+# GRAPH 1
 # =========================================================
 
 fraud_counts = fraud_data['fraud_type'].value_counts()
@@ -442,17 +463,16 @@ fig1 = px.pie(
 )
 
 fig1.update_layout(
-    height=330,
+    height=320,
     paper_bgcolor="white",
     plot_bgcolor="white",
-    font=dict(color="#111827", size=14),
+    font=dict(color="#111827", size=13),
     title="Fraud Type Distribution",
-    title_font=dict(size=22, color="#111827"),
-    legend_font=dict(size=13, color="#111827")
+    title_font=dict(size=20, color="#111827")
 )
 
 # =========================================================
-# GRAPH 2 - LOCATION
+# GRAPH 2
 # =========================================================
 
 location_counts = fraud_data['location'].value_counts().head(6)
@@ -470,19 +490,17 @@ fig2 = px.bar(
 )
 
 fig2.update_layout(
-    height=330,
+    height=320,
     paper_bgcolor="white",
     plot_bgcolor="white",
-    font=dict(color="#111827", size=14),
+    font=dict(color="#111827", size=13),
     title="Most Targeted Locations",
-    title_font=dict(size=22, color="#111827"),
-    xaxis=dict(tickfont=dict(size=13,color="#111827")),
-    yaxis=dict(tickfont=dict(size=13,color="#111827")),
+    title_font=dict(size=20, color="#111827"),
     coloraxis_showscale=False
 )
 
 # =========================================================
-# GRAPH 3 - AGE GROUP
+# GRAPH 3
 # =========================================================
 
 fig3 = px.histogram(
@@ -493,18 +511,16 @@ fig3 = px.histogram(
 )
 
 fig3.update_layout(
-    height=330,
+    height=320,
     paper_bgcolor="white",
     plot_bgcolor="white",
-    font=dict(color="#111827", size=14),
+    font=dict(color="#111827", size=13),
     title="Targeted Age Groups",
-    title_font=dict(size=22, color="#111827"),
-    xaxis=dict(tickfont=dict(size=13,color="#111827")),
-    yaxis=dict(tickfont=dict(size=13,color="#111827"))
+    title_font=dict(size=20, color="#111827")
 )
 
 # =========================================================
-# GRAPH 4 - CARD TYPE
+# GRAPH 4
 # =========================================================
 
 card_counts = fraud_data['card_type'].value_counts()
@@ -518,19 +534,17 @@ fig4 = px.bar(
 )
 
 fig4.update_layout(
-    height=330,
+    height=320,
     paper_bgcolor="white",
     plot_bgcolor="white",
-    font=dict(color="#111827", size=14),
+    font=dict(color="#111827", size=13),
     title="Card Type Fraud Analysis",
-    title_font=dict(size=22, color="#111827"),
-    xaxis=dict(tickfont=dict(size=13,color="#111827")),
-    yaxis=dict(tickfont=dict(size=13,color="#111827")),
+    title_font=dict(size=20, color="#111827"),
     coloraxis_showscale=False
 )
 
 # =========================================================
-# GRAPH DISPLAY
+# DISPLAY GRAPHS
 # =========================================================
 
 g1,g2 = st.columns(2)
@@ -556,69 +570,6 @@ with g4:
     st.markdown('<div class="graph-card">', unsafe_allow_html=True)
     st.plotly_chart(fig4, use_container_width=True)
     st.markdown('</div>', unsafe_allow_html=True)
-
-# =========================================================
-# PURCHASE CATEGORY GRAPH
-# =========================================================
-
-purchase_counts = fraud_data['purchase_category'].value_counts()
-
-fig5 = px.bar(
-    x=purchase_counts.index,
-    y=purchase_counts.values,
-    text=purchase_counts.values,
-    color=purchase_counts.values,
-    color_continuous_scale="mint"
-)
-
-fig5.update_layout(
-    height=330,
-    paper_bgcolor="white",
-    plot_bgcolor="white",
-    font=dict(color="#111827", size=14),
-    title="Purchase Category Fraud Analysis",
-    title_font=dict(size=22, color="#111827"),
-    xaxis=dict(tickfont=dict(size=13,color="#111827")),
-    yaxis=dict(tickfont=dict(size=13,color="#111827")),
-    coloraxis_showscale=False
-)
-
-st.markdown('<div class="graph-card">', unsafe_allow_html=True)
-st.plotly_chart(fig5, use_container_width=True)
-st.markdown('</div>', unsafe_allow_html=True)
-
-# =========================================================
-# CYBER SAFETY SECTION
-# =========================================================
-
-st.write("")
-st.markdown("## 🔐 Cyber Safety Awareness")
-
-a1,a2,a3 = st.columns(3)
-
-with a1:
-    st.markdown("""
-    <div class="feature-card">
-    <h3>📵 Never Share OTP</h3>
-    <p>Bank officials never ask for OTP or PIN.</p>
-    </div>
-    """, unsafe_allow_html=True)
-
-with a2:
-    st.markdown("""
-    <div class="feature-card">
-    <h3>🔗 Avoid Suspicious Links</h3>
-    <p>Do not open unknown or fake links.</p>
-    </div>
-    """, unsafe_allow_html=True)
-
-with a3:
-    st.markdown("""
-    <div class="feature-card">
-    <h3>☎️ Report Fraud Quickly</h3>
-    <p>Call cyber helpline 1930 immediately.</p>
-    </div>
-    """, unsafe_allow_html=True)
 
 # =========================================================
 # FOOTER
