@@ -34,16 +34,20 @@ fraud_data = pd.read_csv("Fraud Dataset.csv")
 st.markdown("""
 <style>
 
+/* =========================================================
+BACKGROUND
+========================================================= */
+
 .stApp{
     background: linear-gradient(
         135deg,
-        #f8f9ff,
-        #eef2ff,
-        #f5f3ff
+        #f1f5f9,
+        #e2e8f0,
+        #e0e7ff
     );
 }
 
-/* Hide Streamlit Menu */
+/* Hide Streamlit */
 
 #MainMenu {visibility:hidden;}
 footer {visibility:hidden;}
@@ -57,7 +61,9 @@ header {visibility:hidden;}
     padding-right:3rem;
 }
 
-/* HERO SECTION */
+/* =========================================================
+HERO SECTION
+========================================================= */
 
 .hero{
     background:linear-gradient(
@@ -86,7 +92,9 @@ header {visibility:hidden;}
     margin-top:10px;
 }
 
-/* FEATURE CARDS */
+/* =========================================================
+FEATURE CARDS
+========================================================= */
 
 .feature-card{
     background:#ffffffcc;
@@ -107,33 +115,41 @@ header {visibility:hidden;}
     font-size:16px;
 }
 
-/* DETECTION BOX */
+/* =========================================================
+DETECTION BOX
+========================================================= */
 
 .detect-box{
     background:white;
     padding:28px;
     border-radius:24px;
-    border:1px solid #dbe4ff;
+    border:0.8px solid #dbe4ff;
     box-shadow:0px 6px 18px rgba(99,102,241,0.08);
 }
 
-/* TEXT AREA */
+/* =========================================================
+TEXT AREA
+========================================================= */
 
 textarea{
     background:#ffffff !important;
     color:#0f172a !important;
     border-radius:18px !important;
-    border:2px solid #c7d2fe !important;
+    border:1px solid #c7d2fe !important;
     font-size:17px !important;
+    caret-color:#7c3aed !important;
 }
 
-/* BUTTON */
+/* =========================================================
+BUTTON
+========================================================= */
 
 .stButton button{
     width:100%;
     height:52px;
     border:none;
     border-radius:14px;
+
     background:linear-gradient(
         135deg,
         #7c3aed,
@@ -145,7 +161,9 @@ textarea{
     font-weight:600;
 }
 
-/* SAFE RESULT */
+/* =========================================================
+RESULT BOXES
+========================================================= */
 
 .safe-box{
     background:#dcfce7;
@@ -156,8 +174,6 @@ textarea{
     font-weight:600;
 }
 
-/* SCAM RESULT */
-
 .scam-box{
     background:#fee2e2;
     color:#991b1b;
@@ -167,7 +183,9 @@ textarea{
     font-weight:600;
 }
 
-/* AWARENESS BOX */
+/* =========================================================
+AWARENESS BOX
+========================================================= */
 
 .awareness{
     background:white;
@@ -188,7 +206,9 @@ textarea{
     font-size:16px;
 }
 
-/* METRICS */
+/* =========================================================
+METRICS
+========================================================= */
 
 [data-testid="metric-container"]{
     background:white;
@@ -198,7 +218,20 @@ textarea{
     box-shadow:0px 6px 18px rgba(99,102,241,0.08);
 }
 
-/* GRAPH CARDS */
+[data-testid="metric-container"] label{
+    color:#111827 !important;
+    font-weight:600 !important;
+    font-size:16px !important;
+}
+
+[data-testid="metric-container"] div{
+    color:#0f172a !important;
+    font-weight:700 !important;
+}
+
+/* =========================================================
+GRAPH CARDS
+========================================================= */
 
 .graph-card{
     background:white;
@@ -209,7 +242,9 @@ textarea{
     margin-bottom:20px;
 }
 
-/* HEADINGS */
+/* =========================================================
+HEADINGS
+========================================================= */
 
 h1,h2,h3{
     color:#0f172a !important;
@@ -277,9 +312,9 @@ st.markdown("## 📩 Scam Message Detection")
 st.markdown('<div class="detect-box">', unsafe_allow_html=True)
 
 message = st.text_area(
-    "",
+    "Enter Your Message",
     height=140,
-    placeholder="Paste suspicious SMS, Email or WhatsApp message..."
+    placeholder="Paste suspicious SMS, Email or WhatsApp message here..."
 )
 
 detect = st.button("Detect Message")
@@ -388,7 +423,7 @@ with m3:
 st.write("")
 
 # =========================================================
-# GRAPH 1 - PIE
+# GRAPH 1 - FRAUD TYPE
 # =========================================================
 
 fraud_counts = fraud_data['fraud_type'].value_counts()
@@ -410,19 +445,10 @@ fig1.update_layout(
     height=330,
     paper_bgcolor="white",
     plot_bgcolor="white",
-    font=dict(
-        color="#111827",
-        size=14
-    ),
+    font=dict(color="#111827", size=14),
     title="Fraud Type Distribution",
-    title_font=dict(
-        size=22,
-        color="#111827"
-    ),
-    legend_font=dict(
-        size=13,
-        color="#111827"
-    )
+    title_font=dict(size=22, color="#111827"),
+    legend_font=dict(size=13, color="#111827")
 )
 
 # =========================================================
@@ -447,26 +473,16 @@ fig2.update_layout(
     height=330,
     paper_bgcolor="white",
     plot_bgcolor="white",
-    font=dict(
-        color="#111827",
-        size=14
-    ),
+    font=dict(color="#111827", size=14),
     title="Most Targeted Locations",
-    title_font=dict(
-        size=22,
-        color="#111827"
-    ),
-    xaxis=dict(
-        tickfont=dict(size=13,color="#111827")
-    ),
-    yaxis=dict(
-        tickfont=dict(size=13,color="#111827")
-    ),
+    title_font=dict(size=22, color="#111827"),
+    xaxis=dict(tickfont=dict(size=13,color="#111827")),
+    yaxis=dict(tickfont=dict(size=13,color="#111827")),
     coloraxis_showscale=False
 )
 
 # =========================================================
-# GRAPH 3 - AGE
+# GRAPH 3 - AGE GROUP
 # =========================================================
 
 fig3 = px.histogram(
@@ -480,21 +496,11 @@ fig3.update_layout(
     height=330,
     paper_bgcolor="white",
     plot_bgcolor="white",
-    font=dict(
-        color="#111827",
-        size=14
-    ),
+    font=dict(color="#111827", size=14),
     title="Targeted Age Groups",
-    title_font=dict(
-        size=22,
-        color="#111827"
-    ),
-    xaxis=dict(
-        tickfont=dict(size=13,color="#111827")
-    ),
-    yaxis=dict(
-        tickfont=dict(size=13,color="#111827")
-    )
+    title_font=dict(size=22, color="#111827"),
+    xaxis=dict(tickfont=dict(size=13,color="#111827")),
+    yaxis=dict(tickfont=dict(size=13,color="#111827"))
 )
 
 # =========================================================
@@ -515,21 +521,11 @@ fig4.update_layout(
     height=330,
     paper_bgcolor="white",
     plot_bgcolor="white",
-    font=dict(
-        color="#111827",
-        size=14
-    ),
+    font=dict(color="#111827", size=14),
     title="Card Type Fraud Analysis",
-    title_font=dict(
-        size=22,
-        color="#111827"
-    ),
-    xaxis=dict(
-        tickfont=dict(size=13,color="#111827")
-    ),
-    yaxis=dict(
-        tickfont=dict(size=13,color="#111827")
-    ),
+    title_font=dict(size=22, color="#111827"),
+    xaxis=dict(tickfont=dict(size=13,color="#111827")),
+    yaxis=dict(tickfont=dict(size=13,color="#111827")),
     coloraxis_showscale=False
 )
 
@@ -579,21 +575,11 @@ fig5.update_layout(
     height=330,
     paper_bgcolor="white",
     plot_bgcolor="white",
-    font=dict(
-        color="#111827",
-        size=14
-    ),
+    font=dict(color="#111827", size=14),
     title="Purchase Category Fraud Analysis",
-    title_font=dict(
-        size=22,
-        color="#111827"
-    ),
-    xaxis=dict(
-        tickfont=dict(size=13,color="#111827")
-    ),
-    yaxis=dict(
-        tickfont=dict(size=13,color="#111827")
-    ),
+    title_font=dict(size=22, color="#111827"),
+    xaxis=dict(tickfont=dict(size=13,color="#111827")),
+    yaxis=dict(tickfont=dict(size=13,color="#111827")),
     coloraxis_showscale=False
 )
 
