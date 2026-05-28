@@ -53,9 +53,7 @@ BACKGROUND
 footer {visibility:hidden;}
 header {visibility:hidden;}
 
-/* =========================================================
-MAIN PADDING
-========================================================= */
+/* Main Padding */
 
 .block-container{
     padding-top:2rem;
@@ -125,7 +123,7 @@ DETECTION BOX
     background:white;
     padding:28px;
     border-radius:24px;
-    border:1px solid #dbe4ff;
+    border:0.8px solid #dbe4ff;
     box-shadow:0px 6px 18px rgba(99,102,241,0.08);
 }
 
@@ -142,33 +140,13 @@ textarea{
     caret-color:#7c3aed !important;
 }
 
-/* Focus Border */
-
-textarea:focus{
-    border:1px solid #8b5cf6 !important;
-    box-shadow:0 0 0 1px #8b5cf6 !important;
-    outline:none !important;
-}
-
-/* Placeholder */
-
-textarea::placeholder{
-    color:#64748b !important;
-    opacity:1 !important;
-}
-
 /* =========================================================
 BUTTON
 ========================================================= */
 
-.stButton{
-    display:flex;
-    justify-content:center;
-}
-
 .stButton button{
-    width:220px;
-    height:50px;
+    width:100%;
+    height:52px;
     border:none;
     border-radius:14px;
 
@@ -246,7 +224,7 @@ METRICS
     font-size:16px !important;
 }
 
-[data-testid="stMetricValue"]{
+[data-testid="metric-container"] div{
     color:#0f172a !important;
     font-weight:700 !important;
 }
@@ -285,8 +263,8 @@ st.markdown("""
 <h1>🛡️ AI Scam Detection & Awareness System</h1>
 
 <p>
-Detect OTP Fraud, Banking Scam, KYC Fraud,
-Phishing and Suspicious Messages using AI
+Detect OTP Fraud, Banking Scam, KYC Fraud, Phishing
+and Suspicious Messages using Artificial Intelligence
 </p>
 
 </div>
@@ -335,7 +313,7 @@ st.markdown('<div class="detect-box">', unsafe_allow_html=True)
 
 message = st.text_area(
     "Enter Your Message",
-    height=110,
+    height=140,
     placeholder="Paste suspicious SMS, Email or WhatsApp message here..."
 )
 
@@ -380,7 +358,7 @@ if detect:
         <ul>
         <li>Never share OTP, CVV or bank details.</li>
         <li>Do not click suspicious links.</li>
-        <li>Banks never ask for personal details.</li>
+        <li>Banks never ask for personal details on calls.</li>
         <li>Report cyber fraud on helpline 1930.</li>
         <li>Verify KYC requests from official apps only.</li>
         </ul>
@@ -418,6 +396,7 @@ if detect:
 # =========================================================
 
 st.write("")
+st.write("")
 st.markdown("## 📊 Fraud Analytics Dashboard")
 
 # =========================================================
@@ -444,7 +423,7 @@ with m3:
 st.write("")
 
 # =========================================================
-# GRAPH 1 - FRAUD TYPES
+# GRAPH 1 - FRAUD TYPE
 # =========================================================
 
 fraud_counts = fraud_data['fraud_type'].value_counts()
@@ -468,7 +447,8 @@ fig1.update_layout(
     plot_bgcolor="white",
     font=dict(color="#111827", size=14),
     title="Fraud Type Distribution",
-    title_font=dict(size=22, color="#111827")
+    title_font=dict(size=22, color="#111827"),
+    legend_font=dict(size=13, color="#111827")
 )
 
 # =========================================================
@@ -496,6 +476,8 @@ fig2.update_layout(
     font=dict(color="#111827", size=14),
     title="Most Targeted Locations",
     title_font=dict(size=22, color="#111827"),
+    xaxis=dict(tickfont=dict(size=13,color="#111827")),
+    yaxis=dict(tickfont=dict(size=13,color="#111827")),
     coloraxis_showscale=False
 )
 
@@ -507,7 +489,7 @@ fig3 = px.histogram(
     fraud_data,
     x="customer_age",
     nbins=15,
-    color_discrete_sequence=["#6366f1"]
+    color_discrete_sequence=["#7c3aed"]
 )
 
 fig3.update_layout(
@@ -516,7 +498,9 @@ fig3.update_layout(
     plot_bgcolor="white",
     font=dict(color="#111827", size=14),
     title="Targeted Age Groups",
-    title_font=dict(size=22, color="#111827")
+    title_font=dict(size=22, color="#111827"),
+    xaxis=dict(tickfont=dict(size=13,color="#111827")),
+    yaxis=dict(tickfont=dict(size=13,color="#111827"))
 )
 
 # =========================================================
@@ -540,6 +524,8 @@ fig4.update_layout(
     font=dict(color="#111827", size=14),
     title="Card Type Fraud Analysis",
     title_font=dict(size=22, color="#111827"),
+    xaxis=dict(tickfont=dict(size=13,color="#111827")),
+    yaxis=dict(tickfont=dict(size=13,color="#111827")),
     coloraxis_showscale=False
 )
 
@@ -570,6 +556,69 @@ with g4:
     st.markdown('<div class="graph-card">', unsafe_allow_html=True)
     st.plotly_chart(fig4, use_container_width=True)
     st.markdown('</div>', unsafe_allow_html=True)
+
+# =========================================================
+# PURCHASE CATEGORY GRAPH
+# =========================================================
+
+purchase_counts = fraud_data['purchase_category'].value_counts()
+
+fig5 = px.bar(
+    x=purchase_counts.index,
+    y=purchase_counts.values,
+    text=purchase_counts.values,
+    color=purchase_counts.values,
+    color_continuous_scale="mint"
+)
+
+fig5.update_layout(
+    height=330,
+    paper_bgcolor="white",
+    plot_bgcolor="white",
+    font=dict(color="#111827", size=14),
+    title="Purchase Category Fraud Analysis",
+    title_font=dict(size=22, color="#111827"),
+    xaxis=dict(tickfont=dict(size=13,color="#111827")),
+    yaxis=dict(tickfont=dict(size=13,color="#111827")),
+    coloraxis_showscale=False
+)
+
+st.markdown('<div class="graph-card">', unsafe_allow_html=True)
+st.plotly_chart(fig5, use_container_width=True)
+st.markdown('</div>', unsafe_allow_html=True)
+
+# =========================================================
+# CYBER SAFETY SECTION
+# =========================================================
+
+st.write("")
+st.markdown("## 🔐 Cyber Safety Awareness")
+
+a1,a2,a3 = st.columns(3)
+
+with a1:
+    st.markdown("""
+    <div class="feature-card">
+    <h3>📵 Never Share OTP</h3>
+    <p>Bank officials never ask for OTP or PIN.</p>
+    </div>
+    """, unsafe_allow_html=True)
+
+with a2:
+    st.markdown("""
+    <div class="feature-card">
+    <h3>🔗 Avoid Suspicious Links</h3>
+    <p>Do not open unknown or fake links.</p>
+    </div>
+    """, unsafe_allow_html=True)
+
+with a3:
+    st.markdown("""
+    <div class="feature-card">
+    <h3>☎️ Report Fraud Quickly</h3>
+    <p>Call cyber helpline 1930 immediately.</p>
+    </div>
+    """, unsafe_allow_html=True)
 
 # =========================================================
 # FOOTER
