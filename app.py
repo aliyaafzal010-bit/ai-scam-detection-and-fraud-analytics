@@ -74,7 +74,7 @@ HERO SECTION
     );
 
     border-radius:30px;
-    padding:55px;
+    padding:50px;
     text-align:center;
     border:1px solid #dbe4ff;
     margin-bottom:35px;
@@ -142,8 +142,13 @@ textarea{
 
 label{
     color:#111827 !important;
-    font-size:16px !important;
+    font-size:20px !important;
     font-weight:600 !important;
+}
+
+placeholder{
+    color:#64748b !important;
+    opacity:1 !important;
 }
 
 /* =========================================================
@@ -163,7 +168,7 @@ BUTTON
     );
 
     color:white;
-    font-size:18px;
+    font-size:20px;
     font-weight:600;
 }
 
@@ -646,7 +651,10 @@ st.markdown("""
 
 <h4 style='color:#64748b;'>
 Developed using Python, Streamlit, Machine Learning,
-NLP & Fraud Analytics
+NLP & Fraud Analytics <br><br>
+
+Model Accuracy: 97%
+
 </h4>
 
 </center>
