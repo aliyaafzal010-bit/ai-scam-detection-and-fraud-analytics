@@ -140,6 +140,12 @@ textarea{
     caret-color:#7c3aed !important;
 }
 
+label{
+    color:#111827 !important;
+    font-size:16px !important;
+    font-weight:600 !important;
+}
+
 /* =========================================================
 BUTTON
 ========================================================= */
@@ -477,7 +483,7 @@ fig2.update_layout(
     title_font=dict(size=22, color="#111827"),
     xaxis=dict(tickfont=dict(size=13,color="#111827")),
     yaxis=dict(tickfont=dict(size=13,color="#111827")),
-    coloraxis_showscale=False
+    coloraxis_showscale=False,
 
     xaxis_title_font=dict(color="#111827", size=18),
     yaxis_title_font=dict(color="#111827", size=18),
@@ -531,7 +537,7 @@ fig4.update_layout(
     title_font=dict(size=22, color="#111827"),
     xaxis=dict(tickfont=dict(size=13,color="#111827")),
     yaxis=dict(tickfont=dict(size=13,color="#111827")),
-    coloraxis_showscale=False
+    coloraxis_showscale=False,
 
     xaxis_title_font=dict(color="#111827", size=18),
     yaxis_title_font=dict(color="#111827", size=18),
