@@ -224,8 +224,8 @@ METRICS
     font-size:16px !important;
 }
 
-[data-testid="metric-container"] div{
-    color:#0f172a !important;
+[data-testid="stMetricValue"]{
+    color:#2563eb !important;
     font-weight:700 !important;
 }
 
@@ -309,7 +309,6 @@ st.write("")
 
 st.markdown("## 📩 Scam Message Detection")
 
-st.markdown('<div class="detect-box">', unsafe_allow_html=True)
 
 message = st.text_area(
     "Enter Your Message",
@@ -479,6 +478,9 @@ fig2.update_layout(
     xaxis=dict(tickfont=dict(size=13,color="#111827")),
     yaxis=dict(tickfont=dict(size=13,color="#111827")),
     coloraxis_showscale=False
+
+    xaxis_title_font=dict(color="#111827", size=18),
+    yaxis_title_font=dict(color="#111827", size=18),
 )
 
 # =========================================================
@@ -500,7 +502,10 @@ fig3.update_layout(
     title="Targeted Age Groups",
     title_font=dict(size=22, color="#111827"),
     xaxis=dict(tickfont=dict(size=13,color="#111827")),
-    yaxis=dict(tickfont=dict(size=13,color="#111827"))
+    yaxis=dict(tickfont=dict(size=13,color="#111827")),
+
+    xaxis_title_font=dict(color="#111827", size=18),
+    yaxis_title_font=dict(color="#111827", size=18),
 )
 
 # =========================================================
@@ -527,6 +532,9 @@ fig4.update_layout(
     xaxis=dict(tickfont=dict(size=13,color="#111827")),
     yaxis=dict(tickfont=dict(size=13,color="#111827")),
     coloraxis_showscale=False
+
+    xaxis_title_font=dict(color="#111827", size=18),
+    yaxis_title_font=dict(color="#111827", size=18),
 )
 
 # =========================================================
