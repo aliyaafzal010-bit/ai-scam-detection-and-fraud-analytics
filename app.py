@@ -341,7 +341,7 @@ if detect:
     cleaned = re.sub(r'[^\w\s]', '', cleaned)
     
     scam_keywords = [
-         "otp",
+        
          "kyc",
          "bank",
          "bank account",
