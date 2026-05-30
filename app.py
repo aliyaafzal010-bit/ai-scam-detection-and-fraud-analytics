@@ -370,6 +370,7 @@ if detect:
 
     if rule_scam:
        prediction = [1]
+       scam_prob = 95
 
     probability = model.predict_proba(vector)
 
