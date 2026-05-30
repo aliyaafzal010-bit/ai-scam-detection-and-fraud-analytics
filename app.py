@@ -339,10 +339,37 @@ if detect:
 
     cleaned = message.lower()
     cleaned = re.sub(r'[^\w\s]', '', cleaned)
+    
+    scam_keywords = [
+         "otp",
+         "kyc",
+         "bank",
+         "bank account",
+         "verify",
+         "verification",
+         "transfer money",
+         "send money",
+          "pay",
+          "payment",
+          "upi",
+          "reward",
+          "lottery",
+          "prize",
+          "urgent",
+          "click link",
+          "fraud",
+          "account blocked",
+          "account suspended"
+     ]
+
+    rule_scam = any(word in cleaned for word in scam_keywords)
 
     vector = vectorizer.transform([cleaned])
 
     prediction = model.predict(vector)
+
+    if rule_scam:
+       prediction = [1]
 
     probability = model.predict_proba(vector)
 
