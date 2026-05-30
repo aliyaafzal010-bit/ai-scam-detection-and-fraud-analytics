@@ -368,13 +368,13 @@ if detect:
 
     prediction = model.predict(vector)
 
-    if rule_scam:
-       prediction = [1]
-       scam_prob = 95
-
     probability = model.predict_proba(vector)
 
     scam_prob = probability[0][1] * 100
+
+    if rule_scam:
+       prediction = [1]
+       scam_prob = 95
 
     st.write("")
     st.markdown("## 🔎 Detection Result")
